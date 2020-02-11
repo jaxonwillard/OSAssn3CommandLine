@@ -1,12 +1,14 @@
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.Process;
 import java.lang.ProcessBuilder;
 import java.util.concurrent.TimeUnit;
+import java.io.BufferedReader;
 import java.io.File;
 
-public class ProcessExample {
+public class ProcessExample1 {
     public static void main(String[] args) {
-        System.out.println("========================================================================================================================================");
+
         execProcess();
     }
 
@@ -20,25 +22,36 @@ public class ProcessExample {
         // System.setProperty("user.dir", proposed.toString());
         // System.out.printf("Updated Directory: %s\n", System.getProperty("user.dir"));
 
-        String[] command = {"git", "ProcessExample.java"};
+        // String[] command = {"nano", "ProcessExample.java"};
+        String[] command = {"ls"};
+
         ProcessBuilder pb = new ProcessBuilder(command);
         pb.directory(new File(System.getProperty("user.dir")));
         pb.redirectInput(ProcessBuilder.Redirect.INHERIT);
         pb.redirectOutput(ProcessBuilder.Redirect.INHERIT);
-        
+
+
 
         try {
-            long start = System.currentTimeMillis();
             Process p = pb.start();
 
+            BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            String line;
+            while((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
 
+
+
+
+
+            long start = System.currentTimeMillis();
             System.out.println("Starting to wait");
-            p.waitFor();
             long end = System.currentTimeMillis();
             System.out.printf("Waited for %d milliseconds\n", end - start);
         }
         catch (IOException ex) {
-            System.out.printf("Illegal command\n, %s\n", ex);
+            System.out.println("Illegal command \n" + ex);
         }
         catch (Exception ex) {
             System.out.println("Something else bad happened");
