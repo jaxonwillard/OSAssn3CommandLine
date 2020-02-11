@@ -16,11 +16,11 @@ public class ProcessExample {
         File fileDir = new File(currentDir);
         System.out.printf("The parent folder is: %s\n", fileDir.getParent());
 
-        java.nio.file.Path proposed = java.nio.file.Paths.get(currentDir, "test");
-        System.setProperty("user.dir", proposed.toString());
-        System.out.printf("Updated Directory: %s\n", System.getProperty("user.dir"));
+        // java.nio.file.Path proposed = java.nio.file.Paths.get(currentDir, "test");
+        // System.setProperty("user.dir", proposed.toString());
+        // System.out.printf("Updated Directory: %s\n", System.getProperty("user.dir"));
 
-        String[] command = {"nanoabc", "ProcessExample.java"};
+        String[] command = {"ls", "ProcessExample.java"};
         ProcessBuilder pb = new ProcessBuilder(command);
         pb.directory(new File(System.getProperty("user.dir")));
         pb.redirectInput(ProcessBuilder.Redirect.INHERIT);
@@ -36,7 +36,7 @@ public class ProcessExample {
             System.out.printf("Waited for %d milliseconds\n", end - start);
         }
         catch (IOException ex) {
-            System.out.println("Illegal command");
+            System.out.printf("Illegal command\n, %s\n", ex);
         }
         catch (Exception ex) {
             System.out.println("Something else bad happened");
