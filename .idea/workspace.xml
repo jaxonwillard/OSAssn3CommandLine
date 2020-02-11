@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="c608a65d-d363-4ec2-b3bc-b8f90ee812f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PipeDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/PipeDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PipeDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PipeDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ProcessExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProcessExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/shell.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,8 +27,9 @@
   <component name="ProjectId" id="1XC4hQfWDAcd3trfwuwhyCh8gHZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="findjar.last.used.dir" value="$PROJECT_DIR$/../OSNotes" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../OSNotes" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../OSNotes/Week6.txt" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunDashboard">

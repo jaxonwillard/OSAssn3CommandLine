@@ -10,7 +10,7 @@ public class PipeDemo {
         ProcessBuilder pb2 = new ProcessBuilder(p2Cmd);
 
         pb1.redirectInput(ProcessBuilder.Redirect.INHERIT);
-        //pb1.redirectOutput(ProcessBuilder.Redirect.PIPE);
+//        pb1.redirectOutput(ProcessBuilder.Redirect.PIPE);
 
         pb2.redirectOutput(ProcessBuilder.Redirect.INHERIT);
 
@@ -33,6 +33,7 @@ public class PipeDemo {
             p2.waitFor();
         }
         catch (Exception ex) {
+            System.out.println(ex);
         }
     }
 

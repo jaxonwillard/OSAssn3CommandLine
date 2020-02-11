@@ -20,7 +20,7 @@ public class ProcessExample {
         System.setProperty("user.dir", proposed.toString());
         System.out.printf("Updated Directory: %s\n", System.getProperty("user.dir"));
 
-        String[] command = {"nanoabc", "ProcessExample.java"};
+        String[] command = {"git", "ProcessExample.java"};
         ProcessBuilder pb = new ProcessBuilder(command);
         pb.directory(new File(System.getProperty("user.dir")));
         pb.redirectInput(ProcessBuilder.Redirect.INHERIT);
@@ -36,7 +36,7 @@ public class ProcessExample {
             System.out.printf("Waited for %d milliseconds\n", end - start);
         }
         catch (IOException ex) {
-            System.out.println("Illegal command");
+            System.out.println(ex);
         }
         catch (Exception ex) {
             System.out.println("Something else bad happened");
