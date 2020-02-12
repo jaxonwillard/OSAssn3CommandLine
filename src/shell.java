@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
-
-
 public class shell {
     public static void main(String[] args) throws IOException {
         Scanner input = new Scanner(System.in);
@@ -13,9 +11,9 @@ public class shell {
 
         while(input.hasNextLine()){
             runCommand(input.nextLine());
-            System.out.print(System.getProperty("user.dir") + "\n-$ ");
-        }
 
+            System.out.print("\n" + System.getProperty("user.dir") + "\n-$ ");
+        }
         input.close();
     }
 
@@ -29,6 +27,9 @@ public class shell {
             case "history":
                 System.out.println("you typed history!");
                 break;
+            case "cd":
+                changeDirectory();
+                break;
             default :
                 if (hasPtime(command)){
                 long start = System.currentTimeMillis();
@@ -40,6 +41,16 @@ public class shell {
                 }
         }
     }
+    static void changeDirectory(){
+        System.out.printf("Current Directory: %s\n", System.getProperty("user.dir"));
+        String currentDir = System.getProperty("user.dir");
+        File fileDir = new File(currentDir);
+        System.out.printf("The parent folder is: %s\n", fileDir.getParent());
+    }
+
+
+
+
     static String[] truncate(String[] list){
         String[] toReturn = new String[list.length-1];
         for (int i=0; i<list.length-1; i++){
@@ -55,6 +66,7 @@ public class shell {
         }
         return false;
     }
+
     static String runExternalCommand(String[] command){
         ProcessBuilder pb = new ProcessBuilder(command);
         pb.directory(new File(System.getProperty("user.dir")));
@@ -62,6 +74,7 @@ public class shell {
         pb.redirectOutput(ProcessBuilder.Redirect.INHERIT);
         try{
             Process p = pb.start();
+            p.waitFor();
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
             String readerLine;
@@ -73,9 +86,9 @@ public class shell {
             return toReturn.toString();
 
         }catch(Exception e){
-            System.out.println(e);
+            
         }
-        return "error in runExternalCommand()";
+        return String.format("Error: %s command not found", command[0]);
     }
 }
 
