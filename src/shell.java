@@ -12,39 +12,29 @@ public class shell {
 
         while (input.hasNextLine()) {
             String line = input.nextLine();
-            if (line.equals("ptime"))
-                System.out.println(totalExtProgramRunTime);
-            else {
-                totalExtProgramRunTime += runCommand(line);
-            }
+            String[] command = line.split(" ");
+            switch (command[0]) {
+                case "":
+                    break;
+                case "exit":
+                    System.exit(-1);
+                case "history":
+                    System.out.println("you typed history!");
+                    break;
+                case "cd":
+                    changeDirectory();
+                    break;
+                case "ptime":
+                    System.out.println(totalExtProgramRunTime);
+                    break;
+                default:
+                    long start = System.currentTimeMillis();
+                    System.out.println(runExternalCommand(command));
+                    totalExtProgramRunTime += System.currentTimeMillis() - start;
+                }
             System.out.print("\n" + System.getProperty("user.dir") + "\n-$ ");
-
         }
         input.close();
-    }
-
-    static long runCommand(String line) {
-        long runTime = 0;
-        String[] command = line.split(" ");
-        switch (command[0]) {
-        case "":
-            break;
-        case "exit":
-            System.exit(-1);
-        case "history":
-            System.out.println("you typed history!");
-            break;
-        case "cd":
-            changeDirectory();
-            break;
-        default:
-            long start = System.currentTimeMillis();
-            System.out.println(runExternalCommand(command));
-            long total = System.currentTimeMillis() - start;
-            runTime = total;
-
-        }
-        return runTime;
     }
 
     static void changeDirectory() {
@@ -52,23 +42,6 @@ public class shell {
         String currentDir = System.getProperty("user.dir");
         File fileDir = new File(currentDir);
         System.out.printf("The parent folder is: %s\n", fileDir.getParent());
-    }
-
-    static String[] truncate(String[] list) {
-        String[] toReturn = new String[list.length - 1];
-        for (int i = 0; i < list.length - 1; i++) {
-            toReturn[i] = list[i];
-        }
-
-        return toReturn;
-    }
-
-    static boolean hasPtime(String[] command) {
-        for (String param : command) {
-            if (param.equals("ptime"))
-                return true;
-        }
-        return false;
     }
 
     static String runExternalCommand(String[] command) {
