@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c608a65d-d363-4ec2-b3bc-b8f90ee812f2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Assignment3/META-INF/Assignment3.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Assignment3/PipeDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Assignment3/PipeDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Assignment3/ProcessExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Assignment3/ProcessExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Assignment3/shell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Assignment3/shell.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/shell.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +30,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="findjar.last.used.dir" value="$PROJECT_DIR$/../OSNotes" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../OSNotes" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunDashboard">
@@ -39,7 +45,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.PipeDemo">
+  <component name="RunManager" selected="Application.shell">
     <configuration name="PipeDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="PipeDemo" />
       <module name="Assignment3" />
@@ -70,9 +76,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.shell" />
         <item itemvalue="Application.PipeDemo" />
         <item itemvalue="Application.ProcessExample" />
-        <item itemvalue="Application.shell" />
         <item itemvalue="Application.inclass" />
       </list>
     </recent_temporary>
@@ -95,7 +101,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
