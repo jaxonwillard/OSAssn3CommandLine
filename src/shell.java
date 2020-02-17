@@ -34,6 +34,9 @@ public class shell {
             case "mdir":
                 mdir(command);
                 break;
+            case "rdir":
+                rdir(command);
+                break;
             case "history":
                 history(history);
                 break;
@@ -179,13 +182,26 @@ public class shell {
     public static void mdir(String[] command) throws IOException {
         if (command.length <= 1) return;
         String currentDir = System.getProperty("user.dir");
-        File fileDir = new File(currentDir);
         java.nio.file.Path proposed = java.nio.file.Paths.get(currentDir, command[1]);
-
         System.setProperty("user.dir", proposed.toString());
         File newFile = new File(System.getProperty("user.dir"));
         if (!newFile.mkdir()) System.out.printf("Error: %s is already directory\n", command[1]);
         else{
         changeDirectory(new String[]{"cd", ".."});}
     }
+
+    public static void rdir(String[] command) throws IOException {
+        if (command.length <= 1) return;
+        if (!dirInList(command[1])) {
+            System.out.printf("Error: %s is not a directory", command[1]);
+        }
+        String currentDir = System.getProperty("user.dir");
+        java.nio.file.Path proposed = java.nio.file.Paths.get(currentDir, command[1]);
+        System.setProperty("user.dir", proposed.toString());
+        File newFile = new File(System.getProperty("user.dir"));
+        newFile.delete();
+        changeDirectory(new String[]{"cd", ".."});
+
+    }
+
 }
