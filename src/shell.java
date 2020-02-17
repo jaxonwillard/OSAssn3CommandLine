@@ -31,6 +31,9 @@ public class shell {
                 break;
             case "exit":
                 System.exit(-1);
+            case "mdir":
+                mdir(command);
+                break;
             case "history":
                 history(history);
                 break;
@@ -82,10 +85,10 @@ public class shell {
 
     static String processFile(File child){
         StringBuilder tr = new StringBuilder();
-        String permissions = (child.isDirectory() ? "t" : "f" ) +
-                (child.canRead() ? "t" : "f" ) +
-                (child.canWrite() ? "t" : "f" ) +
-                (child.canExecute() ? "t" : "f" );
+        String permissions = (child.isDirectory() ? "d" : "-" ) +
+                (child.canRead() ? "r" : "-" ) +
+                (child.canWrite() ? "w" : "-" ) +
+                (child.canExecute() ? "x" : "-" );
         String length = String.format("%10d", child.length());
         Date lastModified = new Date(child.lastModified());
 
@@ -95,22 +98,29 @@ public class shell {
     }
 
     static void changeDirectory(String[] command) throws IOException {
-        System.out.printf("Current Directory: %s\n", System.getProperty("user.dir"));
         String currentDir = System.getProperty("user.dir");
         File fileDir = new File(currentDir);
-        System.out.printf("The parent folder is: %s\n", fileDir.getParent());
-        System.out.println("fileDir.getAbsoluteFile() = " + fileDir.getAbsoluteFile());
-        System.out.println("fileDir.createNewFile(\"test\") = " + fileDir.createNewFile());
-        System.out.println("fileDir.list() = " + Arrays.toString(fileDir.list()));
+        if (command.length == 2 && command[1].equals("..")){
+            System.setProperty("user.dir", fileDir.getParent());
+        }
+        else if (command.length == 2) {
+            if (dirInList(command[1])){
+                java.nio.file.Path proposed = java.nio.file.Paths.get(String.valueOf(fileDir), command[1]);
+                File proposedFile = new File(String.valueOf(proposed));
+                System.setProperty("user.dir", String.valueOf(proposedFile));
+
+            }
 
 
-        System.out.println("Arrays.toString(fileDir.list()) = " + Arrays.toString(fileDir.list()));
-        java.nio.file.Path proposed = java.nio.file.Paths.get(String.valueOf(fileDir), ".git");
-        File proposedFile = new File(String.valueOf(proposed));
-        System.out.println("proposedFile.isDirectory() = " + proposedFile.isDirectory());
-        System.out.println("proposedFile.isFile() = " + proposedFile.isFile());
+        }
+    }
 
-
+    static boolean dirInList(String dir){
+        File fileDir = new File(System.getProperty("user.dir"));
+        for (String contents : Objects.requireNonNull(fileDir.list())){
+            if (dir.equals(contents)) return true;
+        }
+        return false;
     }
 
     static String runExternalCommand(String[] command) {
@@ -162,5 +172,20 @@ public class shell {
         return matchList.toArray(new String[matchList.size()]);
     }
 
+    public static void pipe(String[] command){
 
+    }
+
+    public static void mdir(String[] command) throws IOException {
+        if (command.length <= 1) return;
+        String currentDir = System.getProperty("user.dir");
+        File fileDir = new File(currentDir);
+        java.nio.file.Path proposed = java.nio.file.Paths.get(currentDir, command[1]);
+
+        System.setProperty("user.dir", proposed.toString());
+        File newFile = new File(System.getProperty("user.dir"));
+        if (!newFile.mkdir()) System.out.printf("Error: %s is already directory\n", command[1]);
+        else{
+        changeDirectory(new String[]{"cd", ".."});}
+    }
 }

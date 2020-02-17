@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c608a65d-d363-4ec2-b3bc-b8f90ee812f2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Assignment3/ProcessExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Assignment3/ProcessExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Assignment3/PipeDemo.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Assignment3/shell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Assignment3/shell.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProcessExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProcessExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PipeDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PipeDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shell.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/shell.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/shell.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,9 +29,9 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="findjar.last.used.dir" value="$PROJECT_DIR$/../OSNotes" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../OSNotes/Week6.txt" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -108,5 +108,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/PipeDemo.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
