@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c608a65d-d363-4ec2-b3bc-b8f90ee812f2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Assignment3/shell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Assignment3/shell.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/shell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PipeDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/PipeDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PipeDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PipeDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shell.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/shell.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Assign3.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +49,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.shell">
+  <component name="RunManager" selected="Application.PipeDemo">
     <configuration name="PipeDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="PipeDemo" />
       <module name="Assignment3" />
@@ -73,9 +80,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PipeDemo" />
         <item itemvalue="Application.shell" />
         <item itemvalue="Application.ProcessExample" />
-        <item itemvalue="Application.PipeDemo" />
         <item itemvalue="Application.inclass" />
       </list>
     </recent_temporary>
@@ -105,16 +112,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/PipeDemo.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

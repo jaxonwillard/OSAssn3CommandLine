@@ -6,7 +6,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class shell {
+public class Assign3 {
     public static void main(String[] args) throws IOException {
         long totalExtProgramRunTime = 0;
         Scanner input = new Scanner(System.in);
@@ -26,6 +26,7 @@ public class shell {
 
     static long processCommand(String[] command, ArrayList<String[]> history, long totalExtProgramRunTime) throws IOException {
         long localRunTime = 0;
+        if (hasPipe(command) != -1) return pipe(command, hasPipe(command));
         switch (command[0]) {
             case "":
                 break;
@@ -50,7 +51,7 @@ public class shell {
                 list();
                 break;
             case "ptime":
-                System.out.println(totalExtProgramRunTime);
+                System.out.printf("Total time in child processes: %s\n" , totalExtProgramRunTime);
                 break;
             default:
                 long start = System.currentTimeMillis();
@@ -120,6 +121,9 @@ public class shell {
                 System.setProperty("user.dir", String.valueOf(proposedFile));
 
             }
+            else{
+                System.out.printf("Error: %s not a directory\n", command[1]);
+            }
 
 
         }
@@ -133,6 +137,13 @@ public class shell {
         return false;
     }
 
+    static boolean hasAmpersand(String[] command){
+        for (String s : command){
+            if (s.equals("&")) return true;
+        }
+        return false;
+    }
+
     static String runExternalCommand(String[] command) {
         ProcessBuilder pb = new ProcessBuilder(command);
         pb.directory(new File(System.getProperty("user.dir")));
@@ -140,7 +151,8 @@ public class shell {
         pb.redirectOutput(ProcessBuilder.Redirect.INHERIT);
         try {
             Process p = pb.start();
-            p.waitFor();
+            if (!hasAmpersand(command)){
+            p.waitFor();}
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
             String readerLine;
@@ -182,10 +194,6 @@ public class shell {
         return matchList.toArray(new String[matchList.size()]);
     }
 
-    public static void pipe(String[] command){
-        
-    }
-
     public static void mdir(String[] command) throws IOException {
         if (command.length <= 1) return;
         String currentDir = System.getProperty("user.dir");
@@ -200,7 +208,7 @@ public class shell {
     public static void rdir(String[] command) throws IOException {
         if (command.length <= 1) return;
         if (!dirInList(command[1])) {
-            System.out.printf("Error: %s is not a directory", command[1]);
+            System.out.printf("Error: %s is not a directory\n", command[1]);
         }
         String currentDir = System.getProperty("user.dir");
         java.nio.file.Path proposed = java.nio.file.Paths.get(currentDir, command[1]);
@@ -208,7 +216,59 @@ public class shell {
         File newFile = new File(System.getProperty("user.dir"));
         newFile.delete();
         changeDirectory(new String[]{"cd", ".."});
+    }
 
+    public static int hasPipe(String[] command){
+        for (int i=0; i<command.length; i++){
+            if (command[i].equals("|")) return i;
+        }
+        return -1;
+    }
+
+
+    public static long pipe(String[] command, int index){
+        long runTime = 0;
+        String[] p1Cmd = Arrays.copyOfRange(command, 0, index);
+        String[] p2Cmd = Arrays.copyOfRange(command, index+1, command.length);
+
+
+        ProcessBuilder pb1 = new ProcessBuilder(p1Cmd);
+        ProcessBuilder pb2 = new ProcessBuilder(p2Cmd);
+
+        pb1.redirectInput(ProcessBuilder.Redirect.INHERIT);
+        //pb1.redirectOutput(ProcessBuilder.Redirect.PIPE);
+
+        pb2.redirectOutput(ProcessBuilder.Redirect.INHERIT);
+
+        try {
+
+//            long start = System.currentTimeMillis();
+            Process p1 = pb1.start();
+            Process p2 = pb2.start();
+//            runTime += System.currentTimeMillis() - start;
+
+            java.io.InputStream in = p1.getInputStream();
+            java.io.OutputStream out = p2.getOutputStream();
+
+            int c;
+            while ((c = in.read()) != -1) {
+                out.write(c);
+//                System.out.println(c);
+            }
+
+            out.flush();
+            out.close();
+
+            p1.waitFor();
+            p2.waitFor();
+        }
+        catch (Exception ex) {
+            System.out.println(ex);
+        }
+        /**
+         * dont frget
+         */
+        return runTime;
     }
 
 }
