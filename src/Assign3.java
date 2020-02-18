@@ -234,6 +234,9 @@ public class Assign3 {
 
         ProcessBuilder pb1 = new ProcessBuilder(p1Cmd);
         ProcessBuilder pb2 = new ProcessBuilder(p2Cmd);
+        pb1.directory(new File(System.getProperty("user.dir")));
+        pb2.directory(new File(System.getProperty("user.dir")));
+
 
         pb1.redirectInput(ProcessBuilder.Redirect.INHERIT);
         //pb1.redirectOutput(ProcessBuilder.Redirect.PIPE);
