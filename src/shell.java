@@ -106,6 +106,13 @@ public class shell {
         if (command.length == 2 && command[1].equals("..")){
             System.setProperty("user.dir", fileDir.getParent());
         }
+        else if (command.length == 1){
+            File homeFile = new File(System.getProperty("user.home"));
+            // System.setProperty(currentDir)
+            java.nio.file.Path proposed = java.nio.file.Paths.get(String.valueOf(homeFile));
+            System.setProperty("user.dir", String.valueOf(homeFile));
+
+        }
         else if (command.length == 2) {
             if (dirInList(command[1])){
                 java.nio.file.Path proposed = java.nio.file.Paths.get(String.valueOf(fileDir), command[1]);
@@ -176,7 +183,7 @@ public class shell {
     }
 
     public static void pipe(String[] command){
-
+        
     }
 
     public static void mdir(String[] command) throws IOException {
